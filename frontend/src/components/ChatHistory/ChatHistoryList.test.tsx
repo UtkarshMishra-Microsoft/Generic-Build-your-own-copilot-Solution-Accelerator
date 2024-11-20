@@ -1,11 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';const mockDispatch = jest.fn();
 import { AppStateContext } from '../../state/AppProvider';
 import ChatHistoryList from './ChatHistoryList';
 import { Conversation } from '../../api/models';
 import { ChatHistoryLoadingState } from '../../api/models';
 
-const mockDispatch = jest.fn();
 
 const mockState = {
   isChatHistoryOpen: false,
@@ -134,5 +133,5 @@ describe('ChatHistoryList', () => {
   
   
 
-  
+
 });
