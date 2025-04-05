@@ -75,11 +75,13 @@ jobs:
         id: generate_rg_name
         run: |
           echo "Generating a unique resource group name..."
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
-          COMMON_PART="pslautomationRes"
-          UNIQUE_RG_NAME="${COMMON_PART}${TIMESTAMP}"
+          DATE=$(date +%Y%m%d)
+          TIME=$(date +%H%M%S)
+          ACCL_NAME="Docgen"  # Account name as specified
+          UNIQUE_RG_NAME="rg-${ACCL_NAME}-${DATE}_${TIME}"
           echo "RESOURCE_GROUP_NAME=${UNIQUE_RG_NAME}" >> $GITHUB_ENV
-          echo "Generated Resource_GROUP_PREFIX: ${UNIQUE_RG_NAME}" 
+          echo "Generated Resource_GROUP_NAME: ${UNIQUE_RG_NAME}"
+         
       
       - name: Check and Create Resource Group
         id: check_create_rg
