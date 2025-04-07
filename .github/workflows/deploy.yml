@@ -75,12 +75,12 @@ jobs:
         id: generate_rg_name
         run: |
           echo "Generating a unique resource group name..."
-          DATE=$(date +%Y%m%d)
-          TIME=$(date +%H%M%S)
-          ACCL_NAME="Docgen"  # Account name as specified
-          UNIQUE_RG_NAME="rg-${ACCL_NAME}-${DATE}_${TIME}"
+          ACCL_NAME="docgen"  # Account name as specified
+          SHORT_UUID=$(uuidgen | cut -d'-' -f1)
+          UNIQUE_RG_NAME="arg-${ACCL_NAME}-${SHORT_UUID}"
           echo "RESOURCE_GROUP_NAME=${UNIQUE_RG_NAME}" >> $GITHUB_ENV
-          echo "Generated Resource_GROUP_NAME: ${UNIQUE_RG_NAME}"
+          echo "Generated RESOURCE_GROUP_NAME: ${UNIQUE_RG_NAME}"
+        
          
       
       - name: Check and Create Resource Group
